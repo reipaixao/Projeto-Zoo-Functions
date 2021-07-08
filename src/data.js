@@ -91,8 +91,7 @@ module.exports = {
           name: 'Joe',
           sex: 'male',
           age: 10,
-        },function createEmployee(personalInfo, associatedWith) {
-          return { ...personalInfo, ...associatedWith };
+        },
         {
           name: 'Tad',
           sex: 'male',
