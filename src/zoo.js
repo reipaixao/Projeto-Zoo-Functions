@@ -1,4 +1,4 @@
-const { species, employees } = require('./data');
+const { species, employees, prices } = require('./data');
 const data = require('./data');
 
 function getSpeciesByIds(...ids) {
@@ -31,8 +31,8 @@ function addEmployee(id, firstName, lastName, managers = [], responsibleFor = []
 function countAnimals(species2) {
   if (!species2) {
     const count = {};
-    species.forEach((i) => {
-      count[i.name] = i.residents.length;
+    species.forEach((value) => {
+      count[value.name] = value.residents.length;
     });
     return count;
   }
@@ -58,12 +58,13 @@ function calculateEntry(entrants) {
 // }
 
 // function getOldestFromFirstSpecies(id) {
-//   // seu código aqui
 // }
 
-// function increasePrices(percentage) {
-//   // seu código aqui
-// }
+function increasePrices(percentage) {
+  Object.keys(prices).forEach((value) => {
+    prices[value] = Math.round((prices[value] * (percentage / 100 + 1)) * 100) / 100; 
+  });
+}
 
 // function getEmployeeCoverage(idOrName) {
 //   // seu código aqui
@@ -81,6 +82,6 @@ module.exports = {
   isManager,
   getAnimalsOlderThan,
   // getOldestFromFirstSpecies,
-  // increasePrices,
+  increasePrices,
   createEmployee,
 };
