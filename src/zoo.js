@@ -49,16 +49,20 @@ function calculateEntry(entrants) {
       accumulator + (entrants[currentValue] * prices[currentValue]), 0);
 }
 
-// function getAnimalMap(options) {
-//   // seu código aqui
-// }
+// // function getAnimalMap(options) {
+// //   // seu código aqui
+// // }
 
-// function getSchedule(dayName) {
-//   // seu código aqui
-// }
+// // function getSchedule(dayName) {
+// //   // seu código aqui
+// // }
 
-// function getOldestFromFirstSpecies(id) {
-// }
+function getOldestFromFirstSpecies(id) {
+  const funcionario = data.employees.find((employee) => employee.id === id);
+  const especie = data.species.find((specie) => specie.id === funcionario.responsibleFor[0]);
+  const maisVelho = especie.residents.sort((a, b) => b.age - a.age);
+  return Object.values(maisVelho[0]);
+}
 
 function increasePrices(percentage) {
   Object.keys(prices).forEach((value) => {
@@ -81,7 +85,7 @@ module.exports = {
   addEmployee,
   isManager,
   getAnimalsOlderThan,
-  // getOldestFromFirstSpecies,
+  getOldestFromFirstSpecies,
   increasePrices,
   createEmployee,
 };
