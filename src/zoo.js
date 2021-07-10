@@ -40,9 +40,14 @@ function countAnimals(species2) {
   return contador.residents.length;
 }
 
-// function calculateEntry(entrants) {
-//   // seu código aqui
-// }
+function calculateEntry(entrants) {
+  if (entrants === undefined || entrants === {}) {
+    return 0;
+  }
+  return Object.keys(entrants)
+    .reduce((accumulator, currentValue) =>
+      accumulator + (entrants[currentValue] * prices[currentValue]), 0);
+}
 
 // function getAnimalMap(options) {
 //   // seu código aqui
@@ -65,7 +70,7 @@ function countAnimals(species2) {
 // }
 
 module.exports = {
-  // calculateEntry,
+  calculateEntry,
   // getSchedule,
   countAnimals,
   // getAnimalMap,
