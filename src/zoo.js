@@ -62,7 +62,7 @@ function calculateEntry(entrants) {
 
 function increasePrices(percentage) {
   Object.keys(prices).forEach((value) => {
-    prices[value] = Math.round((prices[value] * (percentage / 100 + 1)) * 100) / 100; 
+    prices[value] = Math.round((prices[value] * (percentage / 100 + 1)) * 100) / 100;
   });
 }
 
