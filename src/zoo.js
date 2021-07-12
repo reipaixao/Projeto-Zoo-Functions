@@ -1,5 +1,6 @@
 const { species, employees, prices } = require('./data');
 const data = require('./data');
+// console.log(data);
 
 function getSpeciesByIds(...ids) {
   return species.filter((i) => ids.includes(i.id));
@@ -49,13 +50,23 @@ function calculateEntry(entrants) {
       accumulator + (entrants[currentValue] * prices[currentValue]), 0);
 }
 
-// // function getAnimalMap(options) {
-// //   // seu código aqui
-// // }
+//   function getAnimalMap(options) {
+   
+// }
 
-// // function getSchedule(dayName) {
-// //   // seu código aqui
-// // }
+function getSchedule(dayName) {
+  const dataHour = { ...data.hours };
+  // console.log(dataHour);
+  Object.entries(dataHour).forEach((day) => {
+    dataHour[day[0]] = `Open from ${day[1].open}am until ${day[1].close - 12}pm`;
+    // console.log(dataHour);
+    if (day[1].open === day[1].close) {
+      dataHour[day[0]] = 'CLOSED';
+    }
+  });
+  return (dayName !== undefined) ? { [dayName]: dataHour[dayName] } : dataHour;
+}
+// console.log(getSchedule());
 
 function getOldestFromFirstSpecies(id) {
   const funcionario = data.employees.find((employee) => employee.id === id);
@@ -76,7 +87,7 @@ function increasePrices(percentage) {
 
 module.exports = {
   calculateEntry,
-  // getSchedule,
+  getSchedule,
   countAnimals,
   // getAnimalMap,
   getSpeciesByIds,
